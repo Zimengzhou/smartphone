@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32H750xx,USE_FULL_LL_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>../Inc;../Drivers/STM32H7xx_HAL_Driver/Inc;../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32H7xx/Include;../Drivers/CMSIS/Include;../Drivers/Board;../Drivers/Board/usb</IncludePath>
+              <IncludePath>../Inc;../Drivers/STM32H7xx_HAL_Driver/Inc;../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32H7xx/Include;../Drivers/CMSIS/Include;../Drivers/Board;../Drivers/Board/usb;..\Drivers\Board\rtt</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -2541,6 +2541,16 @@
               <FileType>5</FileType>
               <FilePath>..\Drivers\Board\lcd_init.h</FilePath>
             </File>
+            <File>
+              <FileName>keyboard.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Drivers\Board\keyboard.c</FilePath>
+            </File>
+            <File>
+              <FileName>keyboard.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Drivers\Board\keyboard.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -2692,6 +2702,31 @@
               <FileName>usbd_ioreq.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\Drivers\Board\usb\usbd_ioreq.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Drivers/Board/RTTViewer</GroupName>
+          <Files>
+            <File>
+              <FileName>SEGGER_RTT.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Drivers\Board\rtt\SEGGER_RTT.c</FilePath>
+            </File>
+            <File>
+              <FileName>SEGGER_RTT.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Drivers\Board\rtt\SEGGER_RTT.h</FilePath>
+            </File>
+            <File>
+              <FileName>SEGGER_RTT_Conf.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Drivers\Board\rtt\SEGGER_RTT_Conf.h</FilePath>
+            </File>
+            <File>
+              <FileName>SEGGER_RTT_printf.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Drivers\Board\rtt\SEGGER_RTT_printf.c</FilePath>
             </File>
           </Files>
         </Group>

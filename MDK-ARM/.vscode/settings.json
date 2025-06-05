@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "*.c": "c",
+        "compare": "c",
+        "cstdint": "c",
+        "keyboard.h": "c",
+        "stm32h750xx.h": "c",
+        "segger_rtt.h": "c"
+    }
+}

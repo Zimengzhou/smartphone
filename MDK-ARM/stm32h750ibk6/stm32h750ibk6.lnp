@@ -45,6 +45,7 @@
 "stm32h750ibk6\tools.o"
 "stm32h750ibk6\lcd.o"
 "stm32h750ibk6\lcd_init.o"
+"stm32h750ibk6\keyboard.o"
 "stm32h750ibk6\usbd_cdc.o"
 "stm32h750ibk6\usbd_cdc_interface.o"
 "stm32h750ibk6\usbd_conf.o"
@@ -52,6 +53,8 @@
 "stm32h750ibk6\usbd_ctlreq.o"
 "stm32h750ibk6\usbd_desc.o"
 "stm32h750ibk6\usbd_ioreq.o"
+"stm32h750ibk6\segger_rtt.o"
+"stm32h750ibk6\segger_rtt_printf.o"
 --strict --scatter "stm32h750ibk6\stm32h750ibk6.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info
 --info sizes --info totals

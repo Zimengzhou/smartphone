@@ -24,16 +24,18 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <stm32h7xx_hal_adc.h>
 #include "tools.h"
 #include "qspi_w25q128.h"
 // #include "EventRecorder.h"
+#include "keyboard.h"
+#include "SEGGER_RTT.h"
 
 // #define FONT_DEFINE
 
 #define english_characters
 #include "lcd_init.h"
 #include "lcd.h"
-#include <stm32h7xx_hal_adc.h>
 //#include "usbd_cdc_if.h"
 
 /* USER CODE END Includes */
@@ -182,9 +184,12 @@ int main(void)
   Lcd_Init();
   Lcd_Init();
 
+  SEGGER_RTT_Init();
+  SEGGER_RTT_SetTerminal(0);
+  SEGGER_RTT_printf(0, "SEGGER_RTT_Viewer\n");
 
-    //    EventRecorderInitialize(EventRecordAll, 1U);
-    //    EventRecorderStart();
+  //    EventRecorderInitialize(EventRecordAll, 1U);
+  //    EventRecorderStart();
 
   /* USER CODE END 2 */
 
@@ -222,14 +227,24 @@ int main(void)
 
     LL_GPIO_SetOutputPin(GPIOE, LL_GPIO_PIN_5);
 
+    // LL_GPIO_ResetOutputPin(GPIOE, LL_GPIO_PIN_3);
+    // LL_GPIO_ResetOutputPin(GPIOE, LL_GPIO_PIN_4);
+    // LL_GPIO_ResetOutputPin(GPIOE, LL_GPIO_PIN_6);
+    // LL_GPIO_ResetOutputPin(GPIOB, LL_GPIO_PIN_2);
+    // LL_GPIO_ResetOutputPin(GPIOC, LL_GPIO_PIN_13);
+    // LL_GPIO_ResetOutputPin(GPIOC, LL_GPIO_PIN_14);
+    // LL_GPIO_ResetOutputPin(GPIOC, LL_GPIO_PIN_15);
+    // LL_GPIO_ResetOutputPin(GPIOI, LL_GPIO_PIN_8);
+    // LL_GPIO_ResetOutputPin(GPIOI, LL_GPIO_PIN_11);
+
     while (1)
     {
+        static char key_event_string[100];
+        static int8_t key_code = -1, key_event_type = 0;
         // 判断变量LCD_BUFFER_INDEX的值是否发生变化, 如果从0变1或者从1变成0，那么
         static uint8_t last_buffer_index = 0;
         if(last_buffer_index != LCD_BUFFER_INDEX)
         {
-          Get_TSG_VALUE(time_stamppp_1, time_stamppp_2);
-          time_stamppp_4 = time_stamppp_1;
           lcd_buffer = (LCD_BUFFER_INDEX == 1) ? lcd_buffer_1 : lcd_buffer_2;
 
           LCD_FillRect(0, 0, 280, 240, color);
@@ -254,29 +269,10 @@ int main(void)
           LCD_DrawString(0, 180, frame_rate_string, BLACK, 12);
           
           
-          //  static uint16_t circle_y = 0;
-          //  static float circle_x = 48;
-          //  static uint16_t circle_y_histry[280];
-          //  circle_x += 0.6;
-          //  circle_y = 148 + 81 * sinf(0.04 * circle_x);
-          //  circle_y_histry[(uint16_t)circle_x] = circle_y;
-          //  if (circle_x >= 270 - 40)
-          //  {
-          //      circle_x = 48;
-          //  }
-          // //  LCD_DrawCircle(circle_x, circle_y, 47, GREEN);
-          //  LCD_DrawCircle(circle_x, circle_y, 48, GREEN);
-          //  LCD_DrawPoint(circle_x, circle_y, YELLOW);
-
-          //  for (uint16_t i = 48; i < circle_x; i++)
-          //  {
-          //      LCD_DrawPoint(i, circle_y_histry[i], LGRAYBLUE);
-          //      LCD_DrawPoint(i + 1, circle_y_histry[i], LGRAYBLUE);
-          //  }
-
+          //Key_event information 
+          LCD_DrawString(2, 50, key_event_string,BLACK, 24);
+          
           SCB_CleanInvalidateDCache();
-          Get_TSG_VALUE(time_stamppp_1, time_stamppp_2);
-          time_stamppp_3 = time_stamppp_1 - time_stamppp_4;
         }
         last_buffer_index = LCD_BUFFER_INDEX;
 
@@ -294,19 +290,71 @@ int main(void)
             get_temperature_time_interval_2 = 0;
             HAL_ADC_Stop_IT(&hadc3);
             sprintf(i_to_string, "Temperature: %lu", __HAL_ADC_CALC_TEMPERATURE(2500, temp_adc, ADC_RESOLUTION_16B));
-            sprintf(frame_rate_string, "Fps : %f, Fps_2: %f", 240000000.0 / (time_stamp_3),240000000.0 / (time_stamppp_3));
+            sprintf(frame_rate_string, "Fps : %f, time interval: %u", 240000000.0 / (time_stamp_3),time_stamppp_3);
             // CDC_Transmit(frame_rate_string, 12);
 
             // sprintf(frame_rate_string, "Fps : %.2f, text string show test", 240000000.0/(time_stamppp_4));
             // uart_print(i_to_string);
             HAL_ADC_Start_IT(&hadc3);
             color += 1;
+            // SEGGER_RTT_printf(0, "SEGGER_RTT_Viewer\n");
+
+            
           }
           get_temperature_time_interval_2++;
         }
         get_temperature_time_interval++;
 
+        while(!keyboard_event_over())
+        {
+          keyboard_event event = keyboardPollevent();
+          key_code = event.key_code;
+          key_event_type = event.key_event;
+          Get_TSG_VALUE(time_stamppp_1, time_stamppp_2);
+          time_stamppp_4 = time_stamppp_1;
+          switch(key_event_type)
+          {
+          case 0:
+            SEGGER_RTT_printf(0, "key_%d DOWN\n", key_code);
+            break;
+          case 1:
+            SEGGER_RTT_printf(0, "key_%d SHORT_UP\n", key_code);
+            break;
+          case 2:
+            SEGGER_RTT_printf(0, "key_%d LONG_DOWN\n", key_code);
+            break;
+          case 3:
+            SEGGER_RTT_printf(0, "key_%d LONG_UP\n", key_code);
+            break;
+          }
+          Get_TSG_VALUE(time_stamppp_1, time_stamppp_2);
+          time_stamppp_3 = time_stamppp_1 - time_stamppp_4;
+          // time_stamppp_4 = time_stamppp_1;
+          if (event.key_code == 6)
+          {
+            if (event.key_event == KEY_DOWN)
+            {
 
+            }
+            if (event.key_event == KEY_LONG_DOWN)
+            {
+            }
+            if (event.key_event == KEY_SHORT_UP)
+            {
+            }
+            if (event.key_event == KEY_LONG_UP)
+            {
+            }
+          }
+        }
+
+        static uint32_t counter_keyscan = 0;
+        counter_keyscan++;
+        if(counter_keyscan >= 250000)
+        {
+          keyboard_scan();
+          counter_keyscan = 0;
+        }
 
         // LCD_Present_Buffer();
         
@@ -840,23 +888,19 @@ static void MX_GPIO_Init(void)
   LL_AHB4_GRP1_EnableClock(LL_AHB4_GRP1_PERIPH_GPIOF);
 
   /**/
+  LL_GPIO_SetOutputPin(GPIOE, LL_GPIO_PIN_3|LL_GPIO_PIN_4|LL_GPIO_PIN_6);
+
+  /**/
+  LL_GPIO_SetOutputPin(GPIOB, LL_GPIO_PIN_2);
+
+  /**/
   LL_GPIO_ResetOutputPin(GPIOE, LL_GPIO_PIN_5);
 
   /**/
-  LL_GPIO_ResetOutputPin(GPIOC, LL_GPIO_PIN_13|LL_GPIO_PIN_14|LL_GPIO_PIN_15|LCD_DC_Pin
-                          |LCD_RESET_Pin);
+  LL_GPIO_ResetOutputPin(GPIOC, LCD_DC_Pin|LCD_RESET_Pin);
 
   /**/
-  LL_GPIO_ResetOutputPin(GPIOI, LL_GPIO_PIN_8|LL_GPIO_PIN_11);
-
-  /**/
-  GPIO_InitStruct.Pin = LL_GPIO_PIN_3|LL_GPIO_PIN_4|LL_GPIO_PIN_6;
-  GPIO_InitStruct.Mode = LL_GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = LL_GPIO_PULL_DOWN;
-  LL_GPIO_Init(GPIOE, &GPIO_InitStruct);
-
-  /**/
-  GPIO_InitStruct.Pin = LL_GPIO_PIN_5;
+  GPIO_InitStruct.Pin = LL_GPIO_PIN_3|LL_GPIO_PIN_4|LL_GPIO_PIN_5|LL_GPIO_PIN_6;
   GPIO_InitStruct.Mode = LL_GPIO_MODE_OUTPUT;
   GPIO_InitStruct.Speed = LL_GPIO_SPEED_FREQ_LOW;
   GPIO_InitStruct.OutputType = LL_GPIO_OUTPUT_PUSHPULL;
@@ -865,18 +909,14 @@ static void MX_GPIO_Init(void)
 
   /**/
   GPIO_InitStruct.Pin = LL_GPIO_PIN_13|LL_GPIO_PIN_14|LL_GPIO_PIN_15;
-  GPIO_InitStruct.Mode = LL_GPIO_MODE_OUTPUT;
-  GPIO_InitStruct.Speed = LL_GPIO_SPEED_FREQ_LOW;
-  GPIO_InitStruct.OutputType = LL_GPIO_OUTPUT_PUSHPULL;
-  GPIO_InitStruct.Pull = LL_GPIO_PULL_NO;
+  GPIO_InitStruct.Mode = LL_GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = LL_GPIO_PULL_UP;
   LL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
   /**/
   GPIO_InitStruct.Pin = LL_GPIO_PIN_8|LL_GPIO_PIN_11;
-  GPIO_InitStruct.Mode = LL_GPIO_MODE_OUTPUT;
-  GPIO_InitStruct.Speed = LL_GPIO_SPEED_FREQ_LOW;
-  GPIO_InitStruct.OutputType = LL_GPIO_OUTPUT_PUSHPULL;
-  GPIO_InitStruct.Pull = LL_GPIO_PULL_NO;
+  GPIO_InitStruct.Mode = LL_GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = LL_GPIO_PULL_UP;
   LL_GPIO_Init(GPIOI, &GPIO_InitStruct);
 
   /**/
@@ -886,6 +926,14 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.OutputType = LL_GPIO_OUTPUT_PUSHPULL;
   GPIO_InitStruct.Pull = LL_GPIO_PULL_NO;
   LL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+
+  /**/
+  GPIO_InitStruct.Pin = LL_GPIO_PIN_2;
+  GPIO_InitStruct.Mode = LL_GPIO_MODE_OUTPUT;
+  GPIO_InitStruct.Speed = LL_GPIO_SPEED_FREQ_LOW;
+  GPIO_InitStruct.OutputType = LL_GPIO_OUTPUT_PUSHPULL;
+  GPIO_InitStruct.Pull = LL_GPIO_PULL_NO;
+  LL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
 /* USER CODE BEGIN MX_GPIO_Init_2 */
 /* USER CODE END MX_GPIO_Init_2 */
