@@ -1,0 +1,4 @@
+Drivers/CMSIS/
+MDK-ARM/stm32h750ibk6/*.o
+MDK-ARM/stm32h750ibk6/*.d
+MDK-ARM/stm32h750ibk6/*.axf

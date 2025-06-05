@@ -1,0 +1,56 @@
+;LR_IROM1 0x08000000 0x00020000  {    ; load region size_region
+;  ER_IROM1 0x08000000 0x00020000  {  ; load address = execution address
+;   *.o (RESET, +First)
+;   *(InRoot$$Sections)
+;   .ANY (+RO)
+;   .ANY (+XO)
+;  }
+
+LR_qspiflash 0x90000000 0x01000000 {
+   ER_qspiflash 0x90000000 0x01000000 {
+   *.o (RESET, +First)
+   *(InRoot$$Sections)
+   .ANY (+RO)
+   .ANY (+XO)
+  }
+  
+  ;128kB
+;  DTCMRAM 0x20000000 0x00020000  {  ; RW data
+  DTCMRAM_WITHOUT_400 0x20000400 0x0001FC00  {  ; RW data
+   .ANY (+RW +ZI)
+  }
+  
+  ;512kB
+  RAM_D1 0x24000000 0x00080000  {
+   ;.ANY (+RW +ZI)
+   .ANY (.RAM_D1)
+  }
+  
+  ;288kB
+  RAM_D2 0x30000000 0x00048000  {
+   ;.ANY (+RW +ZI)
+   .ANY (.RAM_D2)
+  }
+  
+  ;64kB
+  RAM_D3 0x38000000 0x00010000  {
+   ;.ANY (+RW +ZI)
+   .ANY (.RAM_D3)
+  }
+  
+  ;64kB
+  ITCMRAM 0x00000000 0x00010000  {
+   .ANY (.ITCMRAM)
+  }
+  
+  ;64MB
+  SDRAM 0xD0000000 UNINIT 0x4000000 {
+	*(.bss.SDRAM)
+  }
+}
+
+;LR_qspiflash 0x90000000 0x01000000 {
+;   ER_qspiflash 0x90000000 0x01000000 {
+;    fonts.o
+;  }															 
+;}
