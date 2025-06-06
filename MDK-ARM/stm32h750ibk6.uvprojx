@@ -2730,6 +2730,21 @@
             </File>
           </Files>
         </Group>
+        <Group>
+          <GroupName>Apps</GroupName>
+          <Files>
+            <File>
+              <FileName>desktop.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Apps\desktop\desktop.c</FilePath>
+            </File>
+            <File>
+              <FileName>desktop.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Apps\desktop\desktop.h</FilePath>
+            </File>
+          </Files>
+        </Group>
       </Groups>
     </Target>
   </Targets>

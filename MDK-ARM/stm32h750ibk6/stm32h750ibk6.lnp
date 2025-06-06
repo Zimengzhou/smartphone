@@ -55,6 +55,7 @@
 "stm32h750ibk6\usbd_ioreq.o"
 "stm32h750ibk6\segger_rtt.o"
 "stm32h750ibk6\segger_rtt_printf.o"
+"stm32h750ibk6\desktop.o"
 --strict --scatter "stm32h750ibk6\stm32h750ibk6.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info
 --info sizes --info totals

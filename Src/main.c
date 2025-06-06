@@ -248,20 +248,6 @@ int main(void)
           lcd_buffer = (LCD_BUFFER_INDEX == 1) ? lcd_buffer_1 : lcd_buffer_2;
 
           LCD_FillRect(0, 0, 280, 240, color);
-          
-          
-          LCD_FillRect(160, 87, 43, 140, GREEN);
-          LCD_FillRect(170, 97, 43, 110, RED);
-          LCD_FillRect(180, 107, 43, 100, BLUE);
-          LCD_FillRect(190, 117, 43, 100, YELLOW);
-
-          LCD_DrawLine(0, 20, 278, 218, RED);
-          LCD_DrawLine(1, 21, 279, 220, RED);
-          // LCD_DrawLine(0, 20, 279, 20, RED);
-          // LCD_DrawLine(0, 21, 279, 21, RED);
-
-          // LCD_DrawLine(0, 220, 279, 220, RED);
-          // LCD_DrawLine(0, 219, 277, 219, RED);
 
           LCD_DrawString(25, 0, "STM32H750,running in QSPIflash", BLACK, 12);
 
