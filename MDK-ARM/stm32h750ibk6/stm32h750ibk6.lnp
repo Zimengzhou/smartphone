@@ -56,6 +56,11 @@
 "stm32h750ibk6\segger_rtt.o"
 "stm32h750ibk6\segger_rtt_printf.o"
 "stm32h750ibk6\desktop.o"
+"stm32h750ibk6\szmui_activity.o"
+"stm32h750ibk6\szmui_button.o"
+"stm32h750ibk6\szmui_context.o"
+"stm32h750ibk6\szmui_layout.o"
+"stm32h750ibk6\ui_input.o"
 --strict --scatter "stm32h750ibk6\stm32h750ibk6.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info
 --info sizes --info totals

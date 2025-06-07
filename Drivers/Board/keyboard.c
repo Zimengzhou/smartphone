@@ -12,18 +12,18 @@ static uint16_t scan_count[KEYBOARD_KEY_NUMS];
 uint32_t keystate = 0;
 
 keyboard_gpio_type keyboard_col_gpio[KEYBOARD_COLUMN] = {
-    {GPIOC, LL_GPIO_PIN_13},  // 0
-    {GPIOC, LL_GPIO_PIN_14},  // 0
-    {GPIOC, LL_GPIO_PIN_15},  // 0
-    {GPIOI, LL_GPIO_PIN_8},  // 0
-    {GPIOI, LL_GPIO_PIN_11},  // 0
+    {GPIOC, LL_GPIO_PIN_13},
+    {GPIOC, LL_GPIO_PIN_14},
+    {GPIOC, LL_GPIO_PIN_15},
+    {GPIOI, LL_GPIO_PIN_8},
+    {GPIOI, LL_GPIO_PIN_11},
 };
 
 keyboard_gpio_type keyboard_row_gpio[KEYBOARD_ROW] = {
-    {GPIOE, LL_GPIO_PIN_3},  // 0
-    {GPIOE, LL_GPIO_PIN_4},  // 0
-    {GPIOB, LL_GPIO_PIN_2},  // 0
-    {GPIOE, LL_GPIO_PIN_6},  // 0
+    {GPIOE, LL_GPIO_PIN_3},
+    {GPIOE, LL_GPIO_PIN_4},
+    {GPIOB, LL_GPIO_PIN_2},
+    {GPIOE, LL_GPIO_PIN_6},
 };
 
 static void push_event(uint8_t keycode, keyboard_event_type event_type)

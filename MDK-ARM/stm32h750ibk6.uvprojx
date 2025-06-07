@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32H750xx,USE_FULL_LL_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>../Inc;../Drivers/STM32H7xx_HAL_Driver/Inc;../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32H7xx/Include;../Drivers/CMSIS/Include;../Drivers/Board;../Drivers/Board/usb;..\Drivers\Board\rtt</IncludePath>
+              <IncludePath>../Inc;../Drivers/STM32H7xx_HAL_Driver/Inc;../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32H7xx/Include;../Drivers/CMSIS/Include;../Drivers/Board;../Drivers/Board/usb;..\Drivers\Board\rtt;..\Src\ui</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -2742,6 +2742,41 @@
               <FileName>desktop.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\Apps\desktop\desktop.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>UI</GroupName>
+          <Files>
+            <File>
+              <FileName>szmui.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Src\ui\szmui.h</FilePath>
+            </File>
+            <File>
+              <FileName>szmui_activity.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\ui\szmui_activity.c</FilePath>
+            </File>
+            <File>
+              <FileName>szmui_button.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\ui\szmui_button.c</FilePath>
+            </File>
+            <File>
+              <FileName>szmui_context.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\ui\szmui_context.c</FilePath>
+            </File>
+            <File>
+              <FileName>szmui_layout.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\ui\szmui_layout.c</FilePath>
+            </File>
+            <File>
+              <FileName>ui_input.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\ui\ui_input.c</FilePath>
             </File>
           </Files>
         </Group>
