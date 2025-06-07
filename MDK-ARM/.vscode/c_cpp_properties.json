@@ -17,7 +17,9 @@
                 "C:\\Keil_v5\\ARM\\ARMCLANG\\include\\libcxx",
                 "d:\\Projects\\KeilProjects\\stm32h750\\stm32h750ibk6\\MDK-ARM",
                 "d:\\Projects\\KeilProjects\\stm32h750\\stm32h750ibk6\\Src",
-                "d:\\Projects\\KeilProjects\\stm32h750\\stm32h750ibk6\\Drivers\\STM32H7xx_HAL_Driver\\Src"
+                "d:\\Projects\\KeilProjects\\stm32h750\\stm32h750ibk6\\Drivers\\STM32H7xx_HAL_Driver\\Src",
+                "D:/Projects/KeilProjects/stm32h750/stm32h750ibk6/Src/ui",
+                "D:/Projects/KeilProjects/stm32h750/stm32h750ibk6/Apps/desktop"
             ],
             "defines": [
                 "USE_HAL_DRIVER",

@@ -6,6 +6,7 @@
         "keyboard.h": "c",
         "stm32h750xx.h": "c",
         "segger_rtt.h": "c",
-        "desktop.h": "c"
+        "desktop.h": "c",
+        "szmui.h": "c"
     }
 }

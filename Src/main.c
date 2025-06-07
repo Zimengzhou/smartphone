@@ -36,6 +36,21 @@
 #define english_characters
 #include "lcd_init.h"
 #include "lcd.h"
+#include "szmui.h"
+#include "desktop.h"
+
+ui_context ctx = {
+  .activity = (void *)0,
+  .button_behavior = UI_BUTTON_JUST_PRESSED,
+  .widget_state_flag = UI_WIDGET_STATE_INACTIVE,
+  .input = {
+    .key_down = 0,
+    .key_short_up = 0,
+    .key_long_down = 0,
+    .key_long_up = 0,
+    .fn_flag = 0
+  }
+};
 //#include "usbd_cdc_if.h"
 
 /* USER CODE END Includes */
@@ -91,7 +106,6 @@ void SPI_Init(void);
 /* USER CODE BEGIN 0 */
 
 uint16_t adc3_temperature_value[10];
-//__attribute__((section(".bss.SDRAM"))) uint8_t flash_data[5000];
 __IO uint32_t time_stamppp_1, time_stamppp_4, time_stamppp_3, time_stamppp_2;
 extern __IO uint32_t time_stamp_3;
 unsigned char ascii_3216_[95][64];
@@ -236,6 +250,8 @@ int main(void)
     // LL_GPIO_ResetOutputPin(GPIOC, LL_GPIO_PIN_15);
     // LL_GPIO_ResetOutputPin(GPIOI, LL_GPIO_PIN_8);
     // LL_GPIO_ResetOutputPin(GPIOI, LL_GPIO_PIN_11);
+    
+
 
     while (1)
     {
@@ -253,8 +269,8 @@ int main(void)
 
           LCD_DrawString(0, 156, i_to_string, BLACK, 16);
           LCD_DrawString(0, 180, frame_rate_string, BLACK, 12);
-          
-          
+
+          desktop_display(&ctx);
           //Key_event information 
           LCD_DrawString(2, 50, key_event_string,BLACK, 24);
           

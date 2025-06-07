@@ -27,19 +27,40 @@ Project File Date:  06/07/2025
 <h2>Output:</h2>
 *** Using Compiler 'V6.14', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
 Build target 'stm32h750ibk6'
-compiling szmui_context.c...
-compiling ui_input.c...
-../Src/ui/szmui_button.c(31): warning: implicit declaration of function 'LCD_FillRect' is invalid in C99 [-Wimplicit-function-declaration]
-    LCD_FillRect(bounds->x, bounds->y, bounds->w, bounds->h, color.r<<16 | color.g<<8 | color.b);
-    ^
-1 warning generated.
-compiling szmui_button.c...
-compiling szmui_activity.c...
-compiling szmui_layout.c...
+../Apps/desktop/desktop.c(29): warning: implicit truncation from 'int' to bit-field changes value from 107 to 11 [-Wbitfield-constant-conversion]
+    ui_color normal = {107, 112, 187, 255};
+                       ^~~
+../Apps/desktop/desktop.c(29): warning: implicit truncation from 'int' to bit-field changes value from 112 to 48 [-Wbitfield-constant-conversion]
+    ui_color normal = {107, 112, 187, 255};
+                            ^~~
+../Apps/desktop/desktop.c(29): warning: implicit truncation from 'int' to bit-field changes value from 187 to 27 [-Wbitfield-constant-conversion]
+    ui_color normal = {107, 112, 187, 255};
+                                 ^~~
+../Apps/desktop/desktop.c(30): warning: implicit truncation from 'int' to bit-field changes value from 60 to 28 [-Wbitfield-constant-conversion]
+    ui_color hover = {60, 68, 182, 255};
+                      ^~
+../Apps/desktop/desktop.c(30): warning: implicit truncation from 'int' to bit-field changes value from 68 to 4 [-Wbitfield-constant-conversion]
+    ui_color hover = {60, 68, 182, 255};
+                          ^~
+../Apps/desktop/desktop.c(30): warning: implicit truncation from 'int' to bit-field changes value from 182 to 22 [-Wbitfield-constant-conversion]
+    ui_color hover = {60, 68, 182, 255};
+                              ^~~
+../Apps/desktop/desktop.c(31): warning: implicit truncation from 'int' to bit-field changes value from 188 to 28 [-Wbitfield-constant-conversion]
+    ui_color active = {188, 65, 102, 255};
+                       ^~~
+../Apps/desktop/desktop.c(31): warning: implicit truncation from 'int' to bit-field changes value from 65 to 1 [-Wbitfield-constant-conversion]
+    ui_color active = {188, 65, 102, 255};
+                            ^~
+../Apps/desktop/desktop.c(31): warning: implicit truncation from 'int' to bit-field changes value from 102 to 6 [-Wbitfield-constant-conversion]
+    ui_color active = {188, 65, 102, 255};
+                                ^~~
+9 warnings generated.
+compiling desktop.c...
+compiling main.c...
 linking...
-Program Size: Code=48360 RO-data=14296 RW-data=332 ZI-data=298780  
+Program Size: Code=49020 RO-data=14304 RW-data=404 ZI-data=298780  
 FromELF: creating hex file...
-"stm32h750ibk6\stm32h750ibk6.axf" - 0 Error(s), 1 Warning(s).
+"stm32h750ibk6\stm32h750ibk6.axf" - 0 Error(s), 9 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -52,7 +73,7 @@ Package Vendor: Keil
   C:\Users\SZM\AppData\Local\Arm\Packs\Keil\STM32H7xx_DFP\3.1.1\Drivers\CMSIS\Device\ST\STM32H7xx\Include
 
 <h2>Collection of Component Files used:</h2>
-Build Time Elapsed:  00:00:02
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>
