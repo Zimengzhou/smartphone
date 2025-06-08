@@ -113,6 +113,7 @@ unsigned char ascii_2412_[95][48];
 unsigned char ascii_1608_[95][16];
 unsigned char ascii_1206_[95][12];
 
+extern struct Activity desktop_activity;
 void uart_print(char *ch)
 {
     while (*ch)
@@ -340,6 +341,23 @@ int main(void)
             }
             if (event.key_event == KEY_SHORT_UP)
             {
+              desktop_activity.selected_button_index++;
+            }
+            if (event.key_event == KEY_LONG_UP)
+            {
+            }
+          }
+          if (event.key_code == 8)
+          {
+            if (event.key_event == KEY_DOWN)
+            {
+            }
+            if (event.key_event == KEY_LONG_DOWN)
+            {
+            }
+            if (event.key_event == KEY_SHORT_UP)
+            {
+              desktop_activity.selected_button_index--;
             }
             if (event.key_event == KEY_LONG_UP)
             {

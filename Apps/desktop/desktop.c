@@ -14,7 +14,7 @@ struct Activity desktop_activity = {
         .layout_type = UI_LAYOUT_NONE
     },
     .is_active = false,
-    .selected_button_index = 1,
+    .selected_button_index = 2,
     .button_index = 0,
     .clip = {0, 0, ACTIVITY_WIDTH, ACTIVITY_HEIGHT}
 };
@@ -27,8 +27,7 @@ void desktop_init(void)
 void desktop_display(ui_context *ctx)
 {
     ui_color normal = {0xee, 0x11, 0x69, 255};
-    // ui_color hover = {0xbe, 0x0e, 0x54, 255};  
-    ui_color hover = {0x00, 0xFF, 0x00, 255};  
+    ui_color hover = {0xbe, 0x0e, 0x54, 255};  
     ui_color active = {0x7F, 0x09, 0x38, 255};
 
     ui_activity_show(ctx, &desktop_activity);
