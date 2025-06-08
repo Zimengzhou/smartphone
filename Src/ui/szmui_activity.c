@@ -45,4 +45,5 @@ void ui_activity_show(ui_context *ctx, struct Activity *activity)
     ctx->activity->button_index = 0;
     ctx->activity->layout.at_y = 0;
     ctx->activity->layout.row_height = 0;
+    ctx->widget_state_flag = UI_WIDGET_STATE_INACTIVE;
 }

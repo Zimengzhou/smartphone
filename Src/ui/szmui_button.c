@@ -1,13 +1,16 @@
 #include "szmui.h"
 
+#include "SEGGER_RTT.h"
 bool ui_do_button(ui_context* ctx)
 {
     bool result = false;
     if (ctx->activity->button_index == ctx->activity->selected_button_index) 
     {
         ctx->widget_state_flag = UI_WIDGET_STATE_HOVER;
-        if (ui_input_is_key_pressed(&ctx->input, UI_KEY_OK)) 
+        if (ui_input_is_key_pressed(&ctx->input, UI_KEY_OK))
+        {
             ctx->widget_state_flag |= UI_WIDGET_STATE_ACTIVE;
+        }
 
         if (ctx->widget_state_flag & UI_WIDGET_STATE_ACTIVE)
         {
@@ -23,13 +26,17 @@ bool ui_do_button(ui_context* ctx)
 void ui_draw_button(struct ui_button *button, struct ui_rect* bounds, uint8_t widget_state_flag)
 {
     ui_color color;
-    if (widget_state_flag&UI_WIDGET_STATE_ACTIVE) 
+    if (widget_state_flag&UI_WIDGET_STATE_ACTIVE)
+    {
         color = button->active;
-    else if (widget_state_flag&UI_WIDGET_STATE_HOVER) 
+    }
+    else if (widget_state_flag&UI_WIDGET_STATE_HOVER)
+    {
         color = button->hover;
+    }
     else color = button->normal;
 
-    LCD_FillRect(bounds->x, bounds->y, bounds->w, bounds->h, color.r<<16 | color.g<<8 | color.b);
+    LCD_FillRect(bounds->x, bounds->y, bounds->w, bounds->h, ((color.r>>3)<<11) | ((color.g>>2)<<5) | (color.b>>3));
 }
 
 bool ui_button_colored(ui_context* ctx, ui_color normal_color, ui_color hover_color, ui_color active_color)
@@ -37,6 +44,7 @@ bool ui_button_colored(ui_context* ctx, ui_color normal_color, ui_color hover_co
     bool result = false;
 //    struct ui_layout *layout = &ctx->activity->layout;
     ctx->activity->button_index++;
+    ctx->widget_state_flag = UI_WIDGET_STATE_INACTIVE;
 
     struct ui_rect bounds;
     uint8_t show_flag = ui_layout_do(&bounds, ctx);

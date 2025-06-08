@@ -255,26 +255,28 @@ int main(void)
 
     while (1)
     {
-        static char key_event_string[100];
         static int8_t key_code = -1, key_event_type = 0;
         // 判断变量LCD_BUFFER_INDEX的值是否发生变化, 如果从0变1或者从1变成0，那么
         static uint8_t last_buffer_index = 0;
         if(last_buffer_index != LCD_BUFFER_INDEX)
         {
+          Get_TSG_VALUE(time_stamppp_1, time_stamppp_2);
+          LL_mDelay(10);
+          time_stamppp_4 = time_stamppp_1;
           lcd_buffer = (LCD_BUFFER_INDEX == 1) ? lcd_buffer_1 : lcd_buffer_2;
 
           LCD_FillRect(0, 0, 280, 240, color);
 
           LCD_DrawString(25, 0, "STM32H750,running in QSPIflash", BLACK, 12);
 
-          LCD_DrawString(0, 156, i_to_string, BLACK, 16);
-          LCD_DrawString(0, 180, frame_rate_string, BLACK, 12);
 
           desktop_display(&ctx);
-          //Key_event information 
-          LCD_DrawString(2, 50, key_event_string,BLACK, 24);
+          LCD_DrawString(0, 156, i_to_string, BLACK, 16);
+          LCD_DrawString(0, 180, frame_rate_string, BLACK, 12);
           
           SCB_CleanInvalidateDCache();
+          Get_TSG_VALUE(time_stamppp_1, time_stamppp_2);
+          time_stamppp_3 = time_stamppp_1 - time_stamppp_4;
         }
         last_buffer_index = LCD_BUFFER_INDEX;
 
@@ -298,7 +300,7 @@ int main(void)
             // sprintf(frame_rate_string, "Fps : %.2f, text string show test", 240000000.0/(time_stamppp_4));
             // uart_print(i_to_string);
             HAL_ADC_Start_IT(&hadc3);
-            color += 1;
+            // color += 1;
             // SEGGER_RTT_printf(0, "SEGGER_RTT_Viewer\n");
 
             
@@ -312,8 +314,6 @@ int main(void)
           keyboard_event event = keyboardPollevent();
           key_code = event.key_code;
           key_event_type = event.key_event;
-          Get_TSG_VALUE(time_stamppp_1, time_stamppp_2);
-          time_stamppp_4 = time_stamppp_1;
           switch(key_event_type)
           {
           case 0:
@@ -329,14 +329,11 @@ int main(void)
             SEGGER_RTT_printf(0, "key_%d LONG_UP\n", key_code);
             break;
           }
-          Get_TSG_VALUE(time_stamppp_1, time_stamppp_2);
-          time_stamppp_3 = time_stamppp_1 - time_stamppp_4;
           // time_stamppp_4 = time_stamppp_1;
           if (event.key_code == 6)
           {
             if (event.key_event == KEY_DOWN)
             {
-
             }
             if (event.key_event == KEY_LONG_DOWN)
             {

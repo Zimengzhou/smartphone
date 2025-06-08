@@ -14,7 +14,7 @@ struct Activity desktop_activity = {
         .layout_type = UI_LAYOUT_NONE
     },
     .is_active = false,
-    .selected_button_index = 0,
+    .selected_button_index = 1,
     .button_index = 0,
     .clip = {0, 0, ACTIVITY_WIDTH, ACTIVITY_HEIGHT}
 };
@@ -26,25 +26,204 @@ void desktop_init(void)
 
 void desktop_display(ui_context *ctx)
 {
-    ui_color normal = {107, 112, 187, 255};
-    ui_color hover = {60, 68, 182, 255};
-    ui_color active = {188, 65, 102, 255};
+    ui_color normal = {0xee, 0x11, 0x69, 255};
+    // ui_color hover = {0xbe, 0x0e, 0x54, 255};  
+    ui_color hover = {0x00, 0xFF, 0x00, 255};  
+    ui_color active = {0x7F, 0x09, 0x38, 255};
 
     ui_activity_show(ctx, &desktop_activity);
 
-    ui_row(ctx, 5, 0, 0); /*空白行, 高15*/
+    ui_row(ctx, 15, 0, 0); /*空白行, 高15*/
 
-    uint16_t row1_width_array[] = {49, 60, 49};
+    uint16_t row1_width_array[] = {49, 60, 49}; /* 设置每行内各组件长度 */
     ui_row(ctx, 30, row1_width_array, 3);
     if (ui_button_colored(ctx, normal, hover, active))
     { /* 按钮按下执行*/
+
     }
     if (ui_button_colored(ctx, normal, hover, active))
-    { /* 按钮按下执行*/
+    { 
     }
     if (ui_button_colored(ctx, normal, hover, active))
-    { /* 按钮按下执行*/
+    { 
     }
+    
+    uint16_t row2_width_array[] = {200};
+    ui_row(ctx, 150, row2_width_array, 1);
+    ui_scroll_begin(ctx, 2);
+
+    static int32_t time = 0;
+
+    static uint16_t counter_mov = 0;
+    counter_mov++;
+    if (counter_mov >= 2)
+    {
+        time-=1;
+        counter_mov = 0;
+    }
+    ctx->activity->layout.offset_y = time;
+    row2_width_array[0] = 198;
+    ui_row(ctx, 20, row2_width_array, 1);
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    ui_scroll_end(ctx, 180, 2);
 }
 
 void desktop_process(void)

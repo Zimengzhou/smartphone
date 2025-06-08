@@ -9,8 +9,8 @@ extern "C" {
 /**
  * Constants 
  */
-// #define UI_COLOR_FORMAT_RGBA8888 //color format
-#define UI_COLOR_FORMAT_RGB565 //color format
+#define UI_COLOR_FORMAT_RGBA8888 //color format
+// #define UI_COLOR_FORMAT_RGB565 //color format
 #define UI_INPUT_MAX 20
 #define UI_UTF_SIZE 4
 #define ACTIVITY_WIDTH (280-1)
@@ -168,9 +168,9 @@ bool ui_init(struct ui_context *ctx);
  ****************************************************************************************************/
 enum ui_widget_states
 {
-    UI_WIDGET_STATE_INACTIVE = 1,
-    UI_WIDGET_STATE_HOVER    = 2,
-    UI_WIDGET_STATE_ACTIVE   = 4,
+    UI_WIDGET_STATE_INACTIVE = 0x01u,
+    UI_WIDGET_STATE_HOVER    = 0x02u,
+    UI_WIDGET_STATE_ACTIVE   = 0x04u,
 };
 struct ui_button
 {    /* background */
