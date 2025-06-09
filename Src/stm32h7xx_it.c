@@ -196,18 +196,18 @@ void SysTick_Handler(void)
   HAL_IncTick();
   /* USER CODE BEGIN SysTick_IRQn 1 */
   static uint8_t counter = 0;
-  // counter++;
-  // if (counter >= 15)
-  // {
-  //   counter = 0;
-  //   LL_GPIO_ResetOutputPin(GPIOE, LL_GPIO_PIN_5);
-  // }
-  // if (counter == 14)
-  // {
-  //   LL_GPIO_SetOutputPin(GPIOE, LL_GPIO_PIN_5);
-  //   /* code */
-  // }
-    LL_GPIO_TogglePin(GPIOE, LL_GPIO_PIN_5);
+  counter++;
+  if (counter >= 15)
+  {
+    counter = 0;
+    LL_GPIO_ResetOutputPin(GPIOE, LL_GPIO_PIN_5);
+  }
+  if (counter == 14)
+  {
+    LL_GPIO_SetOutputPin(GPIOE, LL_GPIO_PIN_5);
+    /* code */
+  }
+    // LL_GPIO_TogglePin(GPIOE, LL_GPIO_PIN_5);
   
 
 

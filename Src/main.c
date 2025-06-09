@@ -367,7 +367,7 @@ int main(void)
 
         static uint32_t counter_keyscan = 0;
         counter_keyscan++;
-        if(counter_keyscan >= 250000)
+        if(counter_keyscan >= 200000)
         {
           keyboard_scan();
           counter_keyscan = 0;

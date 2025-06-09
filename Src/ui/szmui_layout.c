@@ -61,7 +61,8 @@ void ui_scroll_begin(struct ui_context* ctx, uint16_t pos_x)
 void ui_scroll_end(struct ui_context* ctx,uint16_t height, uint16_t pos_x)
 {
     ctx->activity->layout.at_x -= pos_x;
-    ctx->activity->layout.at_y += height;
+    // ctx->activity->layout.at_y += height;
+    ctx->activity->layout.at_y -= 440-height;
     ctx->activity->layout.offset_y = 0;
     ctx->activity->layout.offset_x = 0;
     ctx->activity->clip.x = 0;
