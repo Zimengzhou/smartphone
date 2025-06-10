@@ -262,18 +262,15 @@ int main(void)
         if(last_buffer_index != LCD_BUFFER_INDEX)
         {
           Get_TSG_VALUE(time_stamppp_1, time_stamppp_2);
-          LL_mDelay(10);
           time_stamppp_4 = time_stamppp_1;
           lcd_buffer = (LCD_BUFFER_INDEX == 1) ? lcd_buffer_1 : lcd_buffer_2;
 
           LCD_FillRect(0, 0, 280, 240, color);
-
-          LCD_DrawString(25, 0, "STM32H750,running in QSPIflash", BLACK, 12);
-
-
+          // LCD_DrawString(25, 0, "STM32H750,running in QSPIflash", BLACK, 12);
           desktop_display(&ctx);
-          LCD_DrawString(0, 156, i_to_string, BLACK, 16);
-          LCD_DrawString(0, 180, frame_rate_string, BLACK, 12);
+          LCD_DrawString(28, 0, "21:25", BLACK, 16);
+          LCD_DrawString(170, 0, i_to_string, BLACK, 12);
+          LCD_DrawString(200, 0, frame_rate_string, BLACK, 12);
           
           SCB_CleanInvalidateDCache();
           Get_TSG_VALUE(time_stamppp_1, time_stamppp_2);
@@ -294,8 +291,9 @@ int main(void)
             temp_adc = temp_adc / 10;
             get_temperature_time_interval_2 = 0;
             HAL_ADC_Stop_IT(&hadc3);
-            sprintf(i_to_string, "Temperature: %lu", __HAL_ADC_CALC_TEMPERATURE(2500, temp_adc, ADC_RESOLUTION_16B));
-            sprintf(frame_rate_string, "Fps : %f, time interval: %u", 240000000.0 / (time_stamp_3),time_stamppp_3);
+            sprintf(i_to_string, "T:%lu", __HAL_ADC_CALC_TEMPERATURE(2500, temp_adc, ADC_RESOLUTION_16B));
+            sprintf(frame_rate_string, "Fps:%.1f", 240000000.0 / (time_stamp_3));
+            // sprintf(frame_rate_string, "Fps : %f, time interval: %u", 240000000.0 / (time_stamp_3),time_stamppp_3);
             // CDC_Transmit(frame_rate_string, 12);
 
             // sprintf(frame_rate_string, "Fps : %.2f, text string show test", 240000000.0/(time_stamppp_4));
@@ -341,7 +339,7 @@ int main(void)
             }
             if (event.key_event == KEY_SHORT_UP)
             {
-              desktop_activity.selected_button_index++;
+              desktop_activity.selected_button_index--;
             }
             if (event.key_event == KEY_LONG_UP)
             {
@@ -357,7 +355,7 @@ int main(void)
             }
             if (event.key_event == KEY_SHORT_UP)
             {
-              desktop_activity.selected_button_index--;
+              desktop_activity.selected_button_index++;
             }
             if (event.key_event == KEY_LONG_UP)
             {

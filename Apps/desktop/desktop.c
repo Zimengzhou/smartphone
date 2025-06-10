@@ -31,54 +31,23 @@ void desktop_display(ui_context *ctx)
     ui_color active = {0x7F, 0x09, 0x38, 255};
 
     ui_activity_show(ctx, &desktop_activity);
-
+    desktop_activity.layout.at_x = 15;
     ui_row(ctx, 15, 0, 0); /*空白行, 高15*/
 
-    uint16_t row1_width_array[] = {49, 60, 49}; /* 设置每行内各组件长度 */
-    ui_row(ctx, 30, row1_width_array, 3);
-    if (ui_button_colored(ctx, normal, hover, active))
-    { /* 按钮按下执行*/
+    uint16_t row1_width_array[] = {48, 48, 48, 48, 48};       /* 设置每行内各组件宽度 */
+    ui_row(ctx, 30, row1_width_array, 5);
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { }
+    if (ui_button_colored(ctx, normal, hover, active)) { }
+    if (ui_button_colored(ctx, normal, hover, active)) { }
+    if (ui_button_colored(ctx, normal, hover, active)) { }
 
-    }
-    if (ui_button_colored(ctx, normal, hover, active))
-    { 
-    }
-    if (ui_button_colored(ctx, normal, hover, active))
-    { 
-    }
-    
-    uint16_t row2_width_array[] = {100};
-    ui_row(ctx, 80, row2_width_array, 1);
+    uint16_t row2_width_array[] = {150};
+    ui_row(ctx, 150, row2_width_array, 1);
     ui_scroll_begin(ctx, 20);
-    
 
-    static int32_t time = 0;
-
-    static uint16_t counter_mov = 0;
-    counter_mov++;
-    if (counter_mov >= 10)
-    {
-        time-=1;
-        counter_mov = 0;
-    }
-    ctx->activity->layout.offset_y = time;
-    row2_width_array[0] = 100;
-    ui_row(ctx, 20, row2_width_array, 1);
-    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
-    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
-    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
-    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
-    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
-    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
-    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
-    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
-    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
-    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
-    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
-    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
-    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
-    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
-    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    uint16_t appListGridSize[] = {50, 50, 50};
+    ui_row(ctx, 50, appListGridSize, 3);
     if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
     if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
     if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
@@ -89,9 +58,10 @@ void desktop_display(ui_context *ctx)
     if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
     ui_scroll_end(ctx);
     
-    
+    ui_row(ctx, 5, row2_width_array, 2);
+    desktop_activity.layout.at_x = 30;
     uint16_t row3_width_array[] = {60, 70};
-    ui_row(ctx, 40, row3_width_array, 2);
+    ui_row(ctx, 34, row3_width_array, 2);
     if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
     if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
 }
@@ -102,3 +72,13 @@ void desktop_process(void)
     // It can handle user inputs, refresh the display, or manage desktop elements.
     // Currently, it does not perform any operations.
 }
+
+    // static int32_t time = 0;
+    // static uint16_t counter_mov = 0;
+    // counter_mov++;
+    // if (counter_mov >= 10)
+    // {
+    //     time-=1;
+    //     counter_mov = 0;
+    // }
+    // ctx->activity->layout.offset_y = time;
