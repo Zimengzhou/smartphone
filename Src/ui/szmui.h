@@ -126,11 +126,17 @@ struct ui_layout
     uint16_t *item_width;
     uint16_t item_height;
     uint16_t item_offset;
+    
+    // Group layout state
+    int16_t saved_at_x;
+    int16_t saved_at_y;
+    int16_t saved_offset_x;
+    int16_t saved_offset_y;
 };
 void ui_row(struct ui_context *ctx, uint16_t item_height, uint16_t *item_width_array, uint8_t col);
 uint8_t ui_layout_do(struct ui_rect* bounds, ui_context *ctx);
 void ui_scroll_begin(struct ui_context* ctx, uint16_t pos_x);
-void ui_scroll_end(struct ui_context* ctx, uint16_t height, uint16_t pos_x);
+void ui_scroll_end(struct ui_context* ctx);
 
 /**************************************************************************************************
                  -Activity

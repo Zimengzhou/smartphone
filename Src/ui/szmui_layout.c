@@ -46,6 +46,9 @@ void ui_layout_draw_scroll(struct ui_rect bounds)
 void ui_scroll_begin(struct ui_context* ctx, uint16_t pos_x)
 {
     struct ui_layout* layout = &ctx->activity->layout;
+    
+    layout->saved_at_x = layout->at_x;
+    layout->saved_at_y = layout->at_y + layout->row_height;
 
     layout->at_x += pos_x;
     struct ui_rect bounds; /* scroll area bounds */
@@ -58,11 +61,11 @@ void ui_scroll_begin(struct ui_context* ctx, uint16_t pos_x)
 
     layout->row_height = 0;
 }
-void ui_scroll_end(struct ui_context* ctx,uint16_t height, uint16_t pos_x)
+void ui_scroll_end(struct ui_context* ctx)
 {
-    ctx->activity->layout.at_x -= pos_x;
-    // ctx->activity->layout.at_y += height;
-    ctx->activity->layout.at_y -= 440-height;
+    ctx->activity->layout.at_x = ctx->activity->layout.saved_at_x;
+    ctx->activity->layout.at_y = ctx->activity->layout.saved_at_y;
+    ctx->activity->layout.row_height = 0;
     ctx->activity->layout.offset_y = 0;
     ctx->activity->layout.offset_x = 0;
     ctx->activity->clip.x = 0;

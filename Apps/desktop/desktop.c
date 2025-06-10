@@ -48,8 +48,9 @@ void desktop_display(ui_context *ctx)
     }
     
     uint16_t row2_width_array[] = {100};
-    ui_row(ctx, 60, row2_width_array, 1);
+    ui_row(ctx, 80, row2_width_array, 1);
     ui_scroll_begin(ctx, 20);
+    
 
     static int32_t time = 0;
 
@@ -61,8 +62,8 @@ void desktop_display(ui_context *ctx)
         counter_mov = 0;
     }
     ctx->activity->layout.offset_y = time;
-    row2_width_array[0] = 68;
-    ui_row(ctx, 20, row2_width_array, 2);
+    row2_width_array[0] = 100;
+    ui_row(ctx, 20, row2_width_array, 1);
     if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
     if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
     if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
@@ -86,9 +87,11 @@ void desktop_display(ui_context *ctx)
     if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
     if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
     if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
-    ui_scroll_end(ctx, 70, 20);
-    ui_row(ctx, 40, row2_width_array, 1);
-    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    ui_scroll_end(ctx);
+    
+    
+    uint16_t row3_width_array[] = {60, 70};
+    ui_row(ctx, 40, row3_width_array, 2);
     if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
     if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
 }
