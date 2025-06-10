@@ -14,10 +14,13 @@ struct Activity desktop_activity = {
         .layout_type = UI_LAYOUT_NONE
     },
     .is_active = false,
-    .selected_button_index = 2,
+    .selected_button_index = 11,
     .button_index = 0,
     .clip = {0, 0, ACTIVITY_WIDTH, ACTIVITY_HEIGHT}
 };
+
+static int16_t appGrid_scroll_offset_y = 0;
+static int16_t appGrid_scroll_offset_y_ref = 0;
 
 void desktop_init(void)
 {
@@ -43,9 +46,9 @@ void desktop_display(ui_context *ctx)
     if (ui_button_colored(ctx, normal, hover, active)) { }
 
     uint16_t row2_width_array[] = {150};
-    ui_row(ctx, 150, row2_width_array, 1);
+    ui_row(ctx, 129, row2_width_array, 1);
     ui_scroll_begin(ctx, 20);
-
+    ctx->activity->layout.offset_y = appGrid_scroll_offset_y_ref;
     uint16_t appListGridSize[] = {50, 50, 50};
     ui_row(ctx, 50, appListGridSize, 3);
     if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
@@ -56,8 +59,14 @@ void desktop_display(ui_context *ctx)
     if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
     if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
     if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    appGrid_scroll_offset_y_ref += ctx->activity->layout.button_scroll_ref;
     ui_scroll_end(ctx);
-    
+
     ui_row(ctx, 5, row2_width_array, 2);
     desktop_activity.layout.at_x = 30;
     uint16_t row3_width_array[] = {60, 70};

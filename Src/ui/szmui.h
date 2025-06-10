@@ -132,9 +132,13 @@ struct ui_layout
     int16_t saved_at_y;
     int16_t saved_offset_x;
     int16_t saved_offset_y;
+    int16_t button_scroll_ref;
+
+    struct ui_rect bounds_clip;
+    struct ui_rect bounds;
 };
 void ui_row(struct ui_context *ctx, uint16_t item_height, uint16_t *item_width_array, uint8_t col);
-uint8_t ui_layout_do(struct ui_rect* bounds, ui_context *ctx);
+uint8_t ui_layout_do(ui_context *ctx);
 void ui_scroll_begin(struct ui_context* ctx, uint16_t pos_x);
 void ui_scroll_end(struct ui_context* ctx);
 
