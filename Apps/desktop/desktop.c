@@ -46,11 +46,38 @@ void desktop_display(ui_context *ctx)
     if (ui_button_colored(ctx, normal, hover, active)) { }
 
     uint16_t row2_width_array[] = {150};
-    ui_row(ctx, 129, row2_width_array, 1);
+    ui_row(ctx, 160, row2_width_array, 1);
     ui_scroll_begin(ctx, 20);
-    ctx->activity->layout.offset_y = appGrid_scroll_offset_y_ref;
-    uint16_t appListGridSize[] = {50, 50, 50};
-    ui_row(ctx, 50, appListGridSize, 3);
+    static uint16_t counter_mov = 0;
+    counter_mov++;
+    if (counter_mov >= 1)
+    {
+        if(appGrid_scroll_offset_y > appGrid_scroll_offset_y_ref+30)
+            appGrid_scroll_offset_y-=10;
+        else if(appGrid_scroll_offset_y > appGrid_scroll_offset_y_ref+8)
+            appGrid_scroll_offset_y-=4;
+        else if(appGrid_scroll_offset_y > appGrid_scroll_offset_y_ref+4)
+            appGrid_scroll_offset_y-=2;
+        else if(appGrid_scroll_offset_y > appGrid_scroll_offset_y_ref+3)
+            appGrid_scroll_offset_y-=1;
+
+        else if(appGrid_scroll_offset_y < appGrid_scroll_offset_y_ref-30)
+            appGrid_scroll_offset_y+=10;
+        else if(appGrid_scroll_offset_y < appGrid_scroll_offset_y_ref-8)
+            appGrid_scroll_offset_y+=4;
+        else if(appGrid_scroll_offset_y < appGrid_scroll_offset_y_ref-4)
+            appGrid_scroll_offset_y+=2;
+        else if(appGrid_scroll_offset_y < appGrid_scroll_offset_y_ref-3)
+            appGrid_scroll_offset_y+=1;
+        else 
+            appGrid_scroll_offset_y = appGrid_scroll_offset_y_ref;
+        counter_mov = 0;
+    }
+    ctx->activity->layout.offset_y = appGrid_scroll_offset_y;
+    // uint16_t appListGridSize[] = {50, 50, 50};
+    // ui_row(ctx, 50, appListGridSize, 3);
+    uint16_t appListGridSize[] = {230, 150, 50};
+    ui_row(ctx, 62, appListGridSize, 1);
     if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
     if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
     if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
@@ -64,15 +91,37 @@ void desktop_display(ui_context *ctx)
     if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
     if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
     if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
-    appGrid_scroll_offset_y_ref += ctx->activity->layout.button_scroll_ref;
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    if(appGrid_scroll_offset_y == appGrid_scroll_offset_y_ref)
+        appGrid_scroll_offset_y_ref += ctx->activity->layout.button_scroll_ref;
     ui_scroll_end(ctx);
 
-    ui_row(ctx, 5, row2_width_array, 2);
-    desktop_activity.layout.at_x = 30;
-    uint16_t row3_width_array[] = {60, 70};
-    ui_row(ctx, 34, row3_width_array, 2);
-    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
-    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    // ui_row(ctx, 5, row2_width_array, 2);
+    // desktop_activity.layout.at_x = 30;
+    // uint16_t row3_width_array[] = {60, 70};
+    // ui_row(ctx, 34, row3_width_array, 2);
+    // if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
+    // if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
 }
 
 void desktop_process(void)

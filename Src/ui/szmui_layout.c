@@ -43,7 +43,7 @@ uint8_t ui_layout_do(ui_context *ctx)
 #include "lcd.h"
 void ui_layout_draw_scroll(struct ui_rect bounds)
 {
-    LCD_FillRect(bounds.x, bounds.y, bounds.w, bounds.h, 0x352d);
+    // LCD_FillRect(bounds.x, bounds.y, bounds.w, bounds.h, 0x352d);
 }
 
 void ui_scroll_begin(struct ui_context* ctx, uint16_t pos_x)

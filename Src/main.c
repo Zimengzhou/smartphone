@@ -368,6 +368,15 @@ int main(void)
         if(counter_keyscan >= 200000)
         {
           keyboard_scan();
+          char ch = SEGGER_RTT_GetKey();
+          if(ch == ' ')
+          {
+            desktop_activity.selected_button_index++;
+          }
+          else if(ch == 'b')
+          {
+            desktop_activity.selected_button_index--;
+          }
           counter_keyscan = 0;
         }
 

@@ -39,9 +39,9 @@ void ui_draw_button(struct ui_button *button, uint8_t widget_state_flag, ui_cont
     else color = button->normal;
 
     LCD_FillRect(bounds->x, bounds->y, bounds->w, bounds->h, ((color.r>>3)<<11) | ((color.g>>2)<<5) | (color.b>>3));
-    char str[5];
-    sprintf(str, "%d", ctx->activity->button_index);
-    LCD_DrawString(ctx->activity->layout.bounds.x, ctx->activity->layout.bounds.y, str, BLACK, 32);
+    // char str[5];
+    // sprintf(str, "%d", ctx->activity->button_index);
+    // LCD_DrawString(ctx->activity->layout.bounds.x, ctx->activity->layout.bounds.y, str, BLACK, 32);
 }
 
 bool ui_button_colored(ui_context* ctx, ui_color normal_color, ui_color hover_color, ui_color active_color)
