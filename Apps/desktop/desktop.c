@@ -104,14 +104,6 @@ void desktop_display(ui_context *ctx)
     if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
     if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
     if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
-    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
-    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
-    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
-    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
-    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
-    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
-    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
-    if (ui_button_colored(ctx, normal, hover, active)) { /* 按钮按下执行*/ }
     if(appGrid_scroll_offset_y == appGrid_scroll_offset_y_ref)
         appGrid_scroll_offset_y_ref += ctx->activity->layout.button_scroll_ref;
     ui_scroll_end(ctx);
